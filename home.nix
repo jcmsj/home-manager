@@ -140,7 +140,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "Fira Code";
+      name = "Iosevka";
     };
     keybindings = {
       "ctrl+c" = "copy_or_interrupt";
