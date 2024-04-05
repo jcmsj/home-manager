@@ -94,10 +94,13 @@
       defaultApplications = {
         "text/plain"= "org.gnome.TextEditor.desktop";
         "inode/directory" = "org.gnome.Nautilus.desktop";
-        "image/png" = "eog.desktop";
+        "image/png" = "org.gnome.eog.desktop";
         "image/jpeg" = "org.gnome.eog.desktop";
-        "image/gif" = "eog.desktop";
-        "image/jpg" = "eog.desktop";
+        "image/gif" = "org.gnome.eog.desktop";
+        "image/jpg" = "org.gnome.eog.desktop";
+        "image/*" = "org.gnome.eog.desktop";
+        "video/*" = "vlc.desktop";
+        "audio/*" = "vlc.desktop";
       };
     };
   };
@@ -113,8 +116,14 @@
       # name = "graphite-gtk-dark";
       name = "adw-gtk3-dark";
     };
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+    };
     gtk3.bookmarks = [
       "file:///media/sorairo/Light%20Novels"
+      "file:///home/jcsan/.config/nix-conf"
+      "file:///media/sorairo/School"
     ];
   };
   programs.git = {
