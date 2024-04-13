@@ -88,7 +88,7 @@
     mimeApps = {
       enable = true;
       associations.added = {
-        "application/pdf" = "firefox-devedition.desktop";
+        "application/pdf" = "firefox.desktop";
         "inode/directory" = "nautilus.desktop";
       };
       defaultApplications = {
@@ -122,6 +122,7 @@
     };
     gtk3.bookmarks = [
       "file:///media/sorairo/Light%20Novels"
+      "file:///home/jcsan/code"
       "file:///home/jcsan/.config/nix-conf"
       "file:///media/sorairo/School"
     ];
