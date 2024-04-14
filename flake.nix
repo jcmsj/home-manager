@@ -16,18 +16,19 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
-	home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
+    in
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
       homeConfigurations."jcsan" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
         # Specify your home configuration modules here, for example,
-	 
+        inherit pkgs;
         # the path to your home.nix.
+
         modules = [
           ./home.nix
-          ags.homeManagerModules.default  # another could be ags
-         ];
+          ags.homeManagerModules.default # another could be ags
+        ];
 
       };
     };

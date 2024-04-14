@@ -1,6 +1,7 @@
 { inputs, config, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jcsan";
@@ -33,6 +34,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    (pkgs.callPackage ./osu-lazer.nix {})
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -93,6 +95,7 @@
       };
       defaultApplications = {
         "text/plain"= "org.gnome.TextEditor.desktop";
+        "text/*" = "org.gnome.TextEditor.desktop";
         "inode/directory" = "org.gnome.Nautilus.desktop";
         "image/png" = "org.gnome.eog.desktop";
         "image/jpeg" = "org.gnome.eog.desktop";
