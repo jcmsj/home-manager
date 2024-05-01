@@ -34,7 +34,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    (pkgs.callPackage ./osu-lazer.nix {})
+    # (pkgs.callPackage ./osu-lazer.nix {})
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -158,6 +158,10 @@
     keybindings = {
       "ctrl+c" = "copy_or_interrupt";
       "ctrl+f>2" = "set_font_size 20";
+      "ctrl+f5" = "launch --location=hsplit";
+      "ctrl+f6" = "launch --location=vsplit";
+      "ctrl+f4" = "launch --location=split";
+      "ctrl+f7" = "layout_action rotate";
     };
   };
   programs.obs-studio = {
