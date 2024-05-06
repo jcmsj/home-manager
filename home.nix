@@ -86,7 +86,7 @@
       music = "/media/sorairo/Music";
       pictures = "/media/sorairo/Pics";
     };
-    
+
     mimeApps = {
       enable = true;
       associations.added = {
@@ -94,7 +94,7 @@
         "inode/directory" = "nautilus.desktop";
       };
       defaultApplications = {
-        "text/plain"= "org.gnome.TextEditor.desktop";
+        "text/plain" = "org.gnome.TextEditor.desktop";
         "text/*" = "org.gnome.TextEditor.desktop";
         "inode/directory" = "org.gnome.Nautilus.desktop";
         "image/png" = "org.gnome.eog.desktop";
@@ -149,6 +149,19 @@
       undo = "uncommit";
       redo = "recommit";
     };
+  };
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      ll = "ls -la";
+      update = "sudo nixos-rebuild switch";
+    };
+    history.size = 15000;
+    history.path = "${config.xdg.dataHome}/zsh/history";
   };
   programs.kitty = {
     enable = true;
