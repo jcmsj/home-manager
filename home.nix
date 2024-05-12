@@ -79,12 +79,14 @@
   services.mpd-mpris.enable = true;
   xdg = {
     enable = true;
+
     userDirs = {
       enable = true;
       documents = "/media/sorairo/Docs";
       videos = "/media/sorairo/Videos";
       music = "/media/sorairo/Music";
       pictures = "/media/sorairo/Pics";
+      download = "/media/sorairo/Downloads";
     };
 
     mimeApps = {
@@ -92,16 +94,26 @@
       associations.added = {
         "application/pdf" = "firefox.desktop";
         "inode/directory" = "nautilus.desktop";
+        "image/*" = "org.gnome.gThumb.desktop";
+        "image/webp" = "org.gnome.gThumb.desktop";
+        "image/png" = "org.gnome.gThumb.desktop";
+        "image/jpeg" = "org.gnome.gThumb.desktop";
+        "image/gif" = "org.gnome.gThumb.desktop";
+        "image/jpg" = "org.gnome.gThumb.desktop";
+        "video/*" = "vlc.desktop";
+        "audio/*" = "vlc.desktop";
       };
+
       defaultApplications = {
         "text/plain" = "org.gnome.TextEditor.desktop";
         "text/*" = "org.gnome.TextEditor.desktop";
         "inode/directory" = "org.gnome.Nautilus.desktop";
-        "image/png" = "org.gnome.eog.desktop";
-        "image/jpeg" = "org.gnome.eog.desktop";
-        "image/gif" = "org.gnome.eog.desktop";
-        "image/jpg" = "org.gnome.eog.desktop";
-        "image/*" = "org.gnome.eog.desktop";
+        "image/*" = "org.gnome.gThumb.desktop";
+        "image/webp" = "org.gnome.gThumb.desktop";
+        "image/png" = "org.gnome.gThumb.desktop";
+        "image/jpeg" = "org.gnome.gThumb.desktop";
+        "image/gif" = "org.gnome.gThumb.desktop";
+        "image/jpg" = "org.gnome.gThumb.desktop";
         "video/*" = "vlc.desktop";
         "audio/*" = "vlc.desktop";
       };
@@ -112,23 +124,32 @@
     enable = true;
     theme = {
       package = pkgs.adw-gtk3;
-      # package = pkgs.graphite-gtk-theme.override {
-      # colorVariants = ["dark"];
-      # themeVariants = [ "green" ];
-      # };
-      # name = "graphite-gtk-dark";
       name = "adw-gtk3-dark";
     };
     iconTheme = {
       name = "Adwaita";
       package = pkgs.gnome.adwaita-icon-theme;
     };
+
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk3.bookmarks = [
       "file:///media/sorairo/Light%20Novels"
-      "file:///home/jcsan/code"
-      "file:///home/jcsan/.config/nix-conf"
+      "file://$HOME/code"
+      "file://$HOME/.config/nix-conf"
       "file:///media/sorairo/School"
     ];
+  };
+  # Prefer dark theme
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+  qt = {
+    enable = true;
+    platformTheme.name = "adwaita";
+    style.name = "adw-gtk3-dark";
   };
   programs.git = {
     enable = true;
